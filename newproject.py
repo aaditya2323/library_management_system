@@ -5,6 +5,7 @@ class Books:
     gener=" "
     Booknumber= " "
     price=" "
+    
 
     def adddetails(self):
         self.Bookname=input("enter book name::> ")
@@ -16,7 +17,31 @@ class Books:
             writer=csv.writer(file)
             writer.writerow([self.Bookname, self.gener, self.Booknumber, self.price])
 
-    # def serch
+    def searchbooks(self):
+        self.Bookname=input("enter book name::>")
+        with open("Books.csv", "r") as file:
+            reader= csv.reader(file)
+            for rows in reader:
+                if self.Bookname==rows[0]:
+                    print (f"""
+                            Bookname={rows[0]}
+                            gener={rows[1]}
+                            booknumber={rows[2]}
+                            price={rows[3]}                            
+""")
+                    
+    def showbooks(self):
+        with open("Books.csv", "r") as file:
+            reader= csv.reader(file)
+            for rows in reader:
+                        print (f"""
+                            Bookname={rows[0]}
+                            gener={rows[1]}
+                            booknumber={rows[2]}
+                            price={rows[3]}
+                 ------------------------------------------------
+""")
+
 
 
 def call():
@@ -25,12 +50,22 @@ def call():
     print ("Welcome to bookstore")
     print (""" 
                 1. Add Books 
-                2. Search Book
-                3. Exit
+                2. Search Books
+                3. show all books
+                4. Exit
 """)
     choice = int (input("Enter your Choice ::>"))
     if choice==1:
         b1.adddetails()
+    
+    elif choice==2:
+        b1.searchbooks()
+    
+    elif choice==3:
+         b1.showbooks()
+    
+    else:
+        exit(0)
     
     
     
