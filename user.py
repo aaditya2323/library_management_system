@@ -32,15 +32,18 @@ class User:
                 for row in reader:
                     if self.username==row[0] and self.userpassword==row[2]:
                         print("login sucessfull")
+                        return True
+                    
                 
                 print("something went wrong")
+                return False
 def menu():
     u1=User(" "," "," ")
 #    u1.loginuser()
     u1.createUser()
 
-
-menu()
+if __name__=="__main__":
+    menu()
 
 
 
